@@ -1,5 +1,7 @@
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * @author alfie
   */
@@ -8,8 +10,17 @@ class FlattenArraysSpec extends FlatSpec with Matchers {
   // you must combine the contents of the multiple arrays into a single array!
 
   def Flatten(arrayOfArrays: Array[Int]*): Array[Int] = {
+    var array = ArrayBuffer[Int]()
+
     // remember you can use ArrayBuilder to create a new array
-    return Array(1,2,3)
+    for (e <- arrayOfArrays) {
+      for ( f <- e) {
+        array += f
+        println(f)
+      }
+    }
+
+    return array.toArray
   }
 
   "Arrays with single entries" should "be combined correctly" in {
